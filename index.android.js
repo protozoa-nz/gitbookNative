@@ -10,8 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  WebView
 } from 'react-native';
+import Raw from 'react-native-htmlview'
 
 export default class gitbookNative extends Component {
   render() {
@@ -20,9 +20,7 @@ export default class gitbookNative extends Component {
         <Text style={styles.welcome}>
           WOOOP23
         </Text>
-        <Text>
-          Here's where the content goes
-        </Text>
+        <Raw value={`<h2> here is the thang </h2>`}/>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
         </Text>
