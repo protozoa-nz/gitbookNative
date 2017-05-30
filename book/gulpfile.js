@@ -16,7 +16,6 @@ gulp.task('default', function() {
 
 function cdSrc() {
   return through.obj(function(file, enc, cb) {
-    console.log(file.path)
     file.base = 'src' 
     file.cwd = 'src' 
     this.push(file)
