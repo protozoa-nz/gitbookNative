@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
-  Text,
+  ScrollView,
   View,
 } from 'react-native'
 import Raw from 'react-native-htmlview'
 import { StackNavigator } from 'react-navigation'
+import html from './html/index'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,28 +18,30 @@ const styles = StyleSheet.create({
   }
 })
 
-const htmls = require(`./components/home`)
-console.log('outside', htmls)
-
 function buildScreen (name) {
-  const html = require(`./components/${name}`)
-  console.log(html)
 
   return (props) => {
     const { navigate } = props.navigation
 
     return (
-      <View style={styles.container}>
-        <Raw value={html} onLinkPress={url => navigate(url)} />
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <Raw value={html[name]} onLinkPress={url => navigate(url)} />
+        </View>
+      </ScrollView>
     )
   }
 }
 
-const App = StackNavigator({
-  home: { screen: buildScreen('home') },
-  about: { screen: buildScreen('about') },
-  contact: { screen: buildScreen('contact') }
-})
+const routes = Object.keys(html).reduce((sofar, name) => {
+  sofar[name] = {screen: buildScreen(name)}
+  return sofar
+}, {})
 
-AppRegistry.registerComponent('App', () => App)
+const initialRouteName = html['SUMMARY.md'] ? 'SUMMARY.md' : undefined
+
+const App = StackNavigator(
+  routes, {initialRouteName}
+)
+
+AppRegistry.registerComponent('gitbookNative', () => App)
