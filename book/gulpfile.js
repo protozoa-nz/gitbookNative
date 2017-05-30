@@ -6,12 +6,23 @@ const dest = require('gulp-dest')
 const jshtml = require('gulp-file2js')
 
 gulp.task('default', function() {
-  return gulp.src(['./**/*.md', '!node_modules/**'])
+  return gulp.src(['./src/**/*.md', '!./src/node_modules/**'])
+    .pipe(cdSrc())
     .pipe(markdown())        
     .pipe(htmltomd())        
     .pipe(jshtml({modules: 'es6Object'}))        
     .pipe(gulp.dest('./dist'))		
 })
+
+function cdSrc() {
+  return through.obj(function(file, enc, cb) {
+    console.log(file.path)
+    file.base = 'src' 
+    file.cwd = 'src' 
+    this.push(file)
+    cb()
+  }) 
+}
 
 function htmltomd() {
   return through.obj(function(file, enc, cb) {
