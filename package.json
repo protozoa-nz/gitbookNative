@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "book:build": "gulp --gulpfile book/gulpfile.js",
     "test": "jest"
   },
   "dependencies": {
@@ -16,6 +17,12 @@
   "devDependencies": {
     "babel-jest": "20.0.3",
     "babel-preset-react-native": "1.9.2",
+    "github": "^9.2.0",
+    "gulp": "^3.9.1",
+    "gulp-dest": "^0.2.3",
+    "gulp-file2js": "github:pietgeursen/gulp-file2js",
+    "gulp-markdown": "^1.2.0",
+    "gulp-marked": "^1.0.0",
     "jest": "20.0.4",
     "react-test-renderer": "16.0.0-alpha.6"
   },

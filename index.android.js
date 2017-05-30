@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import Raw from 'react-native-htmlview'
 import { StackNavigator } from 'react-navigation'
-import html from './html/index'
+import html from './book/dist/'
 
 const styles = StyleSheet.create({
   container: {
