@@ -11,12 +11,26 @@ import html from './book/dist/'
 
 const styles = StyleSheet.create({
   container: {
+    margin: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF'
   }
 })
+
+const rawStyle = StyleSheet.create({
+  margin: 30,
+  fontSize: 30,
+  lineHeight: 35,
+  a: {
+    color: '#222',
+    textDecorationLine: 'underline'
+  },
+  li: {
+    marginBottom: 10
+  }
+}
 
 function buildScreen (name) {
 
@@ -26,7 +40,11 @@ function buildScreen (name) {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Raw value={html[name]} onLinkPress={url => navigate(url)} />
+          <Raw 
+            value={html[name]}
+            stylesheet={rawStyle}
+            onLinkPress={url => navigate(url)}
+          />
         </View>
       </ScrollView>
     )
