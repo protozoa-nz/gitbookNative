@@ -1,3 +1,5 @@
+![](logo.png)
+
 # gitbookNative
 
 > Build a gitbook into a react native app! 
