@@ -4,6 +4,11 @@
 
 ## Set up
 
+### Install dependencies
+```sh
+  npm install
+```
+
 ### Install react-native
 ```sh
   npm install -g react-native
